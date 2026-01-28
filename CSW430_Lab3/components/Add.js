@@ -110,7 +110,7 @@ export default function ProductAdd() {
         style={styles.input}
       />
 
-      <Button mode="contained" onPress={handleSubmit}>
+      <Button mode="contained" onPress={handleSubmit} style={styles.button}>
         Submit
       </Button>
     </View>
@@ -121,4 +121,5 @@ const styles = StyleSheet.create({
   container: { flex: 1, padding: 20 },
   title: { marginBottom: 20, textAlign: 'center' },
   input: { marginBottom: 10 },
+  button: { backgroundColor: 'skyblue' },
 });

@@ -1,14 +1,17 @@
 import * as React from 'react';
+import { useState } from 'react';
 import { BottomNavigation, MD3LightTheme } from 'react-native-paper';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { NavigationContainer } from '@react-navigation/native';
 
-import Products from './components/Product';
+import ProductStack from './components/ProductStackNavigator';
 import ProductAdd from './components/Add';
 import ProductSearch from './components/SearchProduct';
 import ProductDetail from './components/Detail';
 
 export default function App() {
-  const [index, setIndex] = React.useState(0);
+  const [index, setIndex] = useState(0);
+
   const theme = {
     ...MD3LightTheme,
     colors: {
@@ -16,7 +19,8 @@ export default function App() {
       secondaryContainer: '#32323239',
     },
   };
-  const [routes] = React.useState([
+
+  const [routes] = useState([
     {
       key: 'products',
       title: 'Products',
@@ -40,7 +44,7 @@ export default function App() {
   ]);
 
   const renderScene = BottomNavigation.SceneMap({
-    products: Products,
+    products: ProductStack,
     add: ProductAdd,
     search: ProductSearch,
     detail: ProductDetail,
@@ -48,12 +52,14 @@ export default function App() {
 
   return (
     <SafeAreaProvider>
-      <BottomNavigation
-        navigationState={{ index, routes }}
-        onIndexChange={setIndex}
-        renderScene={renderScene}
-        theme={theme}
-      />
+      <NavigationContainer>
+        <BottomNavigation
+          navigationState={{ index, routes }}
+          onIndexChange={setIndex}
+          renderScene={renderScene}
+          theme={theme}
+        />
+      </NavigationContainer>
     </SafeAreaProvider>
   );
 }

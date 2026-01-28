@@ -24,7 +24,7 @@ export default function ProductSearch() {
         style={styles.input}
       />
 
-      <Button mode="contained" onPress={handleSearch}>
+      <Button mode="contained" onPress={handleSearch} style={styles.button}>
         Search
       </Button>
 
@@ -72,4 +72,5 @@ const styles = StyleSheet.create({
   card: {
     marginTop: 10,
   },
+  button: { backgroundColor: 'skyblue' },
 });
